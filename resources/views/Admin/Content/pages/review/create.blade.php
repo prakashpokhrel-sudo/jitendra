@@ -1,0 +1,143 @@
+@extends('layouts.app', ['activePage' => 'store_information', 'titlePage' => __('Manage Review Page')])
+
+@section('content')
+
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+         <div class="col-md-12">
+        <div class="card">
+        <div class="card-header card-header-primary">
+            <div class="row">
+            <div class="col-md-10">
+            <h4 class="card-title ">Create Reviews</h4>
+            
+          </div>
+        <div class="col-md-2">
+          <a type="button" class="btn btn-success" href="{{route('review.list')}}">Review Manage</a>
+        </div>
+          </div>
+      </div>
+            
+
+<div class="card pd-20 pd-sm-40 ">
+         <strong> <h6 style="padding: 20px 0 20px 10px; " class="card-body-title">Team Details</h6> </strong>
+          <br>
+<form method="post" action="{{route('store.review')}}" enctype="multipart/form-data">
+    @csrf()
+          <div class="row">
+  
+    <div class="col-lg-6">
+              <div class="form-group ">
+                 <label style="padding: 0px 0 0px 10px;" class="form-control-label"><strong> Name </strong> <span class="tx-danger">*</span></label>
+                <input name="name" style="padding: 0px 0 0px 10px;"  class="form-control " placeholder="Enter The Title " type="text" >
+                
+              </div><!-- form-group -->
+            </div><!-- col -->
+
+    <div class="col-lg-6">
+              <div class="form-group ">
+                 <label style="padding: 0px 0 0px 10px;" class="form-control-label"><strong>Description </strong> <span class="tx-danger">*</span></label>
+                <input name="desc" style="padding: 0px 0 0px 10px;"  class="form-control " placeholder="Enter The Title " type="text" >
+                
+              </div><!-- form-group -->
+            </div><!-- col -->
+
+          
+
+          <div class="col-lg-6">
+              <div class="form-group ">
+                 <label style="padding: 0px 0 0px 10px;" class="form-control-label"><strong> Profile </strong> <span class="tx-danger">*</span></label>
+                <input name="profile" style="padding: 0px 0 0px 10px;"  class="form-control " placeholder="Enter The Title " type="text" >
+                
+              </div><!-- form-group -->
+            </div><!-- col -->
+
+    
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <label style="padding: 0px 0 0px 10px;" class="form-control-label">Image ( Main Thumbnali): <span class="tx-danger">*</span></label>
+                 <label class="custom-file">
+          <input type="file" id="file" class="custom-file-input" name="review_image" onchange="readURL(this);" >
+          <span class="custom-file-control"></span>
+          <img style="padding: 0px 0 100px 10px;" width="300px;" height="300px;"  src="{{asset('images/image_placeholder.jpg')}}" id="one" style="center">
+            </label>
+
+                </div>
+              </div><!-- col-4 -->
+
+
+        
+
+
+
+  <div class="modal-footer">
+                <button type="submit" class="btn btn-info pd-x-50">Submit</button>
+                
+        </div>
+
+
+        </div><!-- card -->
+
+            </div>
+
+
+        </div>
+       </div>
+        </form>
+
+
+
+
+ 
+
+
+
+
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+
+<script>
+        ClassicEditor
+            .create( document.querySelector( '#editorenglish' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+<script>
+        ClassicEditor
+            .create( document.querySelector( '#editornepali' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+<script type="text/javascript">
+  function readURL(input){
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#one')
+        .attr('src', e.target.result)
+        .width(250)
+        .height(250);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+          
+
+@endsection
